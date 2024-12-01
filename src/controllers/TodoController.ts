@@ -5,17 +5,17 @@ class TodoController {
     {
       completed: true,
       id: '12131a3',
-      title: 'toggleTodotoggleTodotoggleTodotoggleTodotoggleTodo',
+      title: 'Sample 1',
     },
     {
       completed: true,
       id: '12131ad3',
-      title: 'toggleTodotoggleTodotoggleTodotoggleTodotoggleTodo',
+      title: 'Sample 2',
     },
     {
       completed: true,
       id: '121313',
-      title: 'toggleTodotoggleTodotoggleTodotoggleTodotoggleTodo',
+      title: 'Sample 3',
     },
   ];
 
