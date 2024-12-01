@@ -78,7 +78,8 @@ function App(): React.JSX.Element {
     <SafeAreaProvider>
       <SafeAreaView style={{flex: 1, backgroundColor: 'white', padding: 20}}>
         <StatusBar backgroundColor={'white'} barStyle={'dark-content'} />
-        <Text style={{fontSize: 20}}>Todo Manager ABC</Text>
+        <Text style={{fontSize: 20}}>Todo Manager by Team 1</Text>
+        <Text style={{fontSize: 10}}>made with React Native</Text>
         <FlatList
           keyExtractor={item => item.id}
           data={data}
