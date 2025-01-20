@@ -1,127 +1,84 @@
-import React, {useState} from 'react';
-import {
-  FlatList,
-  SafeAreaView,
-  StatusBar,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import {Text} from '@react-native-material/core';
-import CheckBox from 'react-native-check-box';
-import Icon from '@react-native-vector-icons/fontawesome6';
-import {
-  Button,
-  Card,
-  Modal,
-  TextInput,
-  TouchableRipple,
-} from 'react-native-paper';
+// App.js
+import React, {useEffect, useState} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import TodoScreen from './src/views/Todo';
+import HomeScreen from './src/views/Home';
+import FarmScreen from './src/views/Farm/Home';
+import AnimalListScreen from './src/views/Farm/AnimalList';
+import DetailScreen from './src/views/Farm/Detail';
+import PremiumScreen from './src/views/Farm/Premium';
+import AddDataScreen from './src/views/Farm/FormAdd';
+import EditDataScreen from './src/views/Farm/FormEdit';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import TodoController from './src/controllers/TodoController';
-import Todo from './src/models/Todo';
+import {PaperProvider} from 'react-native-paper';
+const Stack = createNativeStackNavigator();
 
-const Item = (props: {onDelete: any; onToggle: any} & Todo) => {
-  return (
-    <TouchableRipple onPress={() => props.onToggle(props.id)}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          flexWrap: 'nowrap',
-          justifyContent: 'space-between',
-          flex: 1,
-          width: '100%',
-        }}>
-        <CheckBox
-          isChecked={props.completed}
-          onClick={() => props.onToggle(props.id)}
-        />
-        <Text
-          style={{
-            textDecorationLine: props.completed ? 'line-through' : 'none',
-            flex: 1,
-            padding: 10,
-          }}
-          numberOfLines={2}>
-          {props?.title || ''}
-        </Text>
-        <TouchableOpacity onPress={() => props.onDelete(props.id)}>
-          <Icon name="delete-left" size={30} color="#900" iconStyle={'solid'} />
-        </TouchableOpacity>
-      </View>
-    </TouchableRipple>
-  );
-};
+export default function App() {
+  const [menu, setMenu] = useState<string>();
 
-function App(): React.JSX.Element {
-  const [data, setData] = useState(TodoController.getTodos());
-  const [inputTitle, setInputTitle] = useState('');
-  const [visible, setIsVisible] = useState(false);
-
-  const addTodo = () => {
-    if (inputTitle.trim()) {
-      setData(TodoController.addTodo(inputTitle));
-      setInputTitle('');
-      setIsVisible(false);
-    }
+  const getDefaultAppMenu = async () => {
+    const defaultMenu = (await AsyncStorage.getItem('defaultMenu')) || '';
+    setMenu(defaultMenu);
   };
 
-  const toggleTodo = (id: string) => {
-    setData(TodoController.toggleTodo(id));
-  };
-
-  const deleteTodo = (id: string) => {
-    setData(TodoController.deleteTodo(id));
-  };
+  useEffect(() => {
+    getDefaultAppMenu();
+  }, []);
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={{flex: 1, backgroundColor: 'white', padding: 20}}>
-        <StatusBar backgroundColor={'white'} barStyle={'dark-content'} />
-        <Text style={{fontSize: 20}}>Todo Manager by Team 1</Text>
-        <Text style={{fontSize: 10}}>made with React Native</Text>
-        <FlatList
-          keyExtractor={item => item.id}
-          data={data}
-          renderItem={({item}) => (
-            <Item {...item} onDelete={deleteTodo} onToggle={toggleTodo} />
-          )}
-        />
-        <Button
-          mode="elevated"
-          onPress={() => setIsVisible(true)}
-          contentStyle={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: 5,
-          }}>
-          Add Task
-        </Button>
-        <Modal visible={visible} style={{margin: '5%'}}>
-          <Card style={{padding: 20}}>
-            <Text style={{fontSize: 18, marginBottom: 10}}>
-              Create New Task
-            </Text>
-            <TextInput
-              mode="outlined"
-              onChangeText={text => setInputTitle(text)}
+      <PaperProvider theme={{dark: false}}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Home"
+              component={HomeScreen}
+              options={{title: 'Select your app'}}
             />
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'flex-end',
-                padding: 10,
-              }}>
-              <Button onPress={() => setIsVisible(false)}>Cancel</Button>
-              <Button onPress={addTodo} mode="contained-tonal">
-                Save
-              </Button>
-            </View>
-          </Card>
-        </Modal>
-      </SafeAreaView>
+            <Stack.Screen
+              name="Farm"
+              component={FarmScreen}
+              options={{title: 'My Farm'}}
+            />
+            <Stack.Screen
+              name="AnimalList"
+              component={AnimalListScreen}
+              options={{title: 'Animal List'}}
+            />
+            <Stack.Screen
+              name="Detail"
+              component={DetailScreen}
+              options={{title: 'Detail Ternak'}}
+            />
+            <Stack.Screen
+              name="AddData"
+              component={AddDataScreen}
+              options={({route}) => ({
+                title: 'Tambah Data ' + route?.params?.type,
+              })}
+            />
+            <Stack.Screen
+              name="Premium"
+              component={PremiumScreen}
+              options={{title: 'Premium', header: () => <></>}}
+            />
+            <Stack.Screen
+              name="EditData"
+              component={EditDataScreen}
+              options={({route}) => ({
+                title: 'Edit Data ' + route?.params?.type,
+              })}
+            />
+            <Stack.Screen
+              name="Todo"
+              component={TodoScreen}
+              options={{title: 'Todo'}}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
     </SafeAreaProvider>
   );
 }
-
-export default App;
