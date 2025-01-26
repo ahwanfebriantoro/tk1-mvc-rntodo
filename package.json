@@ -1,5 +1,5 @@
 {
-  "name": "Team1App",
+  "name": "TP2Ahwan",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -24,6 +24,7 @@
     "react": "18.3.1",
     "react-hook-form": "^7.54.2",
     "react-native": "0.76.3",
+    "react-native-bootsplash": "^6.3.2",
     "react-native-check-box": "^2.1.7",
     "react-native-gesture-handler": "^2.22.0",
     "react-native-paper": "^5.12.5",

@@ -8,9 +8,17 @@ export default function Home() {
   const navi = useNavigation();
 
   return (
-    <View style={{flexDirection: 'row', gap: 15, justifyContent: 'center', margin: 20}}>
+    <View
+      style={{
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        gap: 15,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        margin: 20,
+      }}>
       <TouchableHighlight
-        style={{height: 200, width: '45%'}}
+        style={{height: 200, maxWidth: '50%', flex: 1}}
         onPress={() => navi.navigate('Todo')}>
         <Card>
           <ImageBackground
@@ -39,7 +47,7 @@ export default function Home() {
         </Card>
       </TouchableHighlight>
       <TouchableHighlight
-        style={{height: 200, width: '45%'}}
+        style={{height: 200, maxWidth: '50%', flex: 1}}
         onPress={() => navi.navigate('Farm')}>
         <Card>
           <ImageBackground

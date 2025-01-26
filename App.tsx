@@ -2,17 +2,22 @@
 import React, {useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import TodoScreen from './src/views/Todo';
-import HomeScreen from './src/views/Home';
-import FarmScreen from './src/views/Farm/Home';
-import AnimalListScreen from './src/views/Farm/AnimalList';
-import DetailScreen from './src/views/Farm/Detail';
-import PremiumScreen from './src/views/Farm/Premium';
-import AddDataScreen from './src/views/Farm/FormAdd';
-import EditDataScreen from './src/views/Farm/FormEdit';
+// import TodoScreen from './src/views/Todo';
+// import HomeScreen from './src/views/Home';
+// import FarmScreen from './src/views/Farm/Home';
+// import AnimalListScreen from './src/views/Farm/AnimalList';
+// import DetailScreen from './src/views/Farm/Detail';
+// import PremiumScreen from './src/views/Farm/Premium';
+// import AddDataScreen from './src/views/Farm/FormAdd';
+// import EditDataScreen from './src/views/Farm/FormEdit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {PaperProvider} from 'react-native-paper';
+import RandomPeople from './src/views/People';
+import RandomPeopleDetail from './src/views/People/Detail';
+
+import BootSplash from 'react-native-bootsplash';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -30,14 +35,24 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <PaperProvider theme={{dark: false}}>
-        <NavigationContainer>
+        <NavigationContainer
+          onReady={() => {
+            BootSplash.hide({fade: true});
+          }}>
           <Stack.Navigator>
             <Stack.Screen
               name="Home"
-              component={HomeScreen}
-              options={{title: 'Select your app'}}
+              component={RandomPeople}
+              options={{title: 'Fake User App'}}
             />
             <Stack.Screen
+              name="DetailPerson"
+              component={RandomPeopleDetail}
+              options={({route}) => ({
+                title: `${route?.params?.data?.name?.first} ${route?.params?.data?.name?.last}`,
+              })}
+            />
+            {/* <Stack.Screen
               name="Farm"
               component={FarmScreen}
               options={{title: 'My Farm'}}
@@ -75,7 +90,7 @@ export default function App() {
               name="Todo"
               component={TodoScreen}
               options={{title: 'Todo'}}
-            />
+            /> */}
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>
