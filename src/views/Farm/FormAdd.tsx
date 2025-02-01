@@ -54,7 +54,7 @@ export default function FormAdd({route}: any) {
         createdAt: firestore.FieldValue.serverTimestamp(),
       });
       console.log('Berhasil membuat data baru!');
-      navi.navigate('AnimalList', {type: route?.params?.type});
+      navi.replace('AnimalList', {type: route?.params?.type});
     } catch (error) {
       console.error('Error menambah data:', error);
     }

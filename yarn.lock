@@ -2226,10 +2226,22 @@
   dependencies:
     firebase "10.13.2"
 
+"@react-native-firebase/auth@^21.7.1":
+  version "21.7.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-21.7.1.tgz#54791f6c3f9504dd8550d16feacb0fce6575337b"
+  integrity sha512-aJ7e2xZvEupOsTk4dM8XwQUErJOn9NzA9ghCTN8ypkLAyOguGOdt/WSIQxAn/8o8xxPd5XSPyVkGDEvlhpIgDw==
+  dependencies:
+    plist "^3.1.0"
+
 "@react-native-firebase/firestore@^21.7.0":
   version "21.7.0"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-21.7.0.tgz#39f7ea8fdf6f5a416fe3f256f57790fdb51dea05"
   integrity sha512-TnzfgLZ0zp2H39IqBMIfydrNmHC34IXKf5k9sLfFPBAOygEFsY8Q5tfk+ljJmpdDVKilFp6QfxWfpxwdMHK8Xw==
+
+"@react-native-google-signin/google-signin@^13.1.0":
+  version "13.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-google-signin/google-signin/-/google-signin-13.1.0.tgz#6482b89acf2ac88a6c68bc1304a265d5b7c3bb3a"
+  integrity sha512-C2/sqb0/s0c+Dwc/mykASZsRuHxGqn7SFrCxCY9D8p8IOQO05haInhCc7lzraJshRixGva5c/4usQZ71HMYSEQ==
 
 "@react-native-material/core@^1.3.7":
   version "1.3.7"
@@ -3895,6 +3907,11 @@ domutils@^3.0.1:
     domelementtype "^2.3.0"
     domhandler "^5.0.3"
 
+dotenv@^16.4.5:
+  version "16.4.7"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.7.tgz#0e20c5b82950140aa99be360a8a5f52335f53c26"
+  integrity sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==
+
 eastasianwidth@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/eastasianwidth/-/eastasianwidth-0.2.0.tgz#696ce2ec0aa0e6ea93a397ffcf24aa7840c827cb"
@@ -4951,7 +4968,7 @@ internal-slot@^1.0.7:
     hasown "^2.0.0"
     side-channel "^1.0.4"
 
-invariant@^2.2.4:
+invariant@2.2.4, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -6890,6 +6907,13 @@ react-native-check-box@^2.1.7:
   dependencies:
     prop-types "^15.5.7"
 
+react-native-dotenv@^3.4.11:
+  version "3.4.11"
+  resolved "https://registry.yarnpkg.com/react-native-dotenv/-/react-native-dotenv-3.4.11.tgz#2e6c4eabd55d5f1bf109b3dd9141dadf9c55cdd4"
+  integrity sha512-6vnIE+WHABSeHCaYP6l3O1BOEhWxKH6nHAdV7n/wKn/sciZ64zPPp2NUdEUf1m7g4uuzlLbjgr+6uDt89q2DOg==
+  dependencies:
+    dotenv "^16.4.5"
+
 react-native-flex-layout@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/react-native-flex-layout/-/react-native-flex-layout-0.1.5.tgz#147379c9286a6d6999cd942dc9f4bdec75514ddd"
@@ -6956,6 +6980,14 @@ react-native-video@^6.9.1:
   version "6.9.1"
   resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-6.9.1.tgz#e83bfcd608e381adf5e02295c07a943ff64eaaa1"
   integrity sha512-JwQPp4+tp2a+hy59KEqKTxW7GtPZtd95sKeFedbz7ywIcRbjyaT2Zy97OuCSbbpI+1xmSMp74CH8R9ooG3VesQ==
+
+react-native-webview@^13.13.2:
+  version "13.13.2"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-13.13.2.tgz#6d72fd8492f11accbcf3be4d1386fa961e424357"
+  integrity sha512-zACPDTF0WnaEnKZ9mA/r/UpcOpV2gQM06AAIrOOexnO8UJvXL8Pjso0b/wTqKFxUZZnmjKuwd8gHVUosVOdVrw==
+  dependencies:
+    escape-string-regexp "^4.0.0"
+    invariant "2.2.4"
 
 react-native-wheely@^0.6.0:
   version "0.6.0"
@@ -8415,3 +8447,8 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zustand@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-5.0.3.tgz#b323435b73d06b2512e93c77239634374b0e407f"
+  integrity sha512-14fwWQtU3pH4dE0dOpdMiWjddcH+QzKIgk1cl8epwSE7yag43k/AD/m4L6+K7DytAOr9gGBe3/EXj9g7cdostg==

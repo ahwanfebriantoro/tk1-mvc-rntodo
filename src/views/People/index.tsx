@@ -10,7 +10,6 @@ export default function RandomPeople() {
   const getPeopleData = async () => {
     const data = await fetch('https://randomuser.me/api/?results=10&gender=male');
     const json = await data.json();
-    console.log(JSON.stringify(json.results, null, 2));
     setData(json.results);
     return;
   };

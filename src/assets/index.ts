@@ -5,4 +5,5 @@ export const assets = {
   chicken: require('./chicken.jpg'),
   catfish: require('./catfish.jpg'),
   chickenPremium: require('./chicken-premium.mp4'),
+  ccc: require('./cute-cow-cop.jpg')
 };

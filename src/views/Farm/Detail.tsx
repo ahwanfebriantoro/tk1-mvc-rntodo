@@ -5,17 +5,6 @@ import firestore from '@react-native-firebase/firestore';
 import dayjs from 'dayjs';
 import {useEffect, useState} from 'react';
 
-const updateDocument = async (id: string) => {
-  try {
-    await firestore().collection('livestock').doc(id).update({
-      age: 30,
-    });
-    console.log('Document updated!');
-  } catch (error) {
-    console.error('Error updating document:', error);
-  }
-};
-
 export const getPrice = (age: number) =>
   Intl.NumberFormat('id-ID', {
     style: 'currency',
@@ -27,7 +16,6 @@ export default function Detail({route}) {
   const [data, setData] = useState<any>();
 
   const navi = useNavigation();
-  console.log(JSON.stringify(data, null, 2));
 
   const age = data?.birth_date
     ? dayjs(Date.now()).diff(data?.birth_date, 'years')

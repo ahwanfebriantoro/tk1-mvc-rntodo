@@ -10,7 +10,7 @@ import {
 } from 'react-native-paper';
 import firestore from '@react-native-firebase/firestore';
 import {Controller, useForm} from 'react-hook-form';
-import {useCallback, useState} from 'react';
+import {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import DateTimePicker from 'react-native-ui-datepicker';
 import dayjs from 'dayjs';
@@ -51,7 +51,7 @@ export default function FormEdit({route}: any) {
           status: values?.status,
         });
       console.log('Berhasil mengubah data baru!');
-      navi.navigate('Detail', {
+      navi.replace('Detail', {
         type: route?.params?.type,
         data: {id: route?.params?.data?.id},
       });

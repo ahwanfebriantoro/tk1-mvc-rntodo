@@ -1,4 +1,4 @@
-package com.tp2ahwan
+package com.team1app
 
 import android.app.Application
 import com.facebook.react.PackageList
